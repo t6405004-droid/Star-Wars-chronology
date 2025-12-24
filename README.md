@@ -1,18 +1,14 @@
-# Star Wars Chronology
-
- **Открыть сайт:** [https://16405004-droid.github.io/Star-Wars-chronology/](https://t6405004-droid.github.io/Star-Wars-chronology/)
-
- **Исходный код:** [GitHub](https://github.com/16405004-droid/Star-Wars-chronology)
-
----
-
 ## О проекте
-Веб-сайт с полной хронологией вселенной "Звёздные Войны".
 
-## Технологии
-- HTML5
-- CSS3
-- GitHub Pages
+Веб-сайт с полной интерактивной хронологией вселенной "Звёздные Войны".  
+Проект визуализирует все ключевые события саги в хронологическом порядке:
 
-## Контакты
-- GitHub: [16405004-droid](https://github.com/16405004-droid)
+- **Полная временная шкала** от Старой Республики до Новой
+- **Фильмы, сериалы** в правильном порядке
+- **Адаптивный дизайн** для всех устройств
+
+## Открыть сайт
+[https://t6405004-droid.github.io/Star-Wars-chronology/](https://t6405004-droid.github.io/Star-Wars-chronology/)
+
+## Исходный код
+[GitHub Repository](https://github.com/t6405004-droid/Star-Wars-chronology)
