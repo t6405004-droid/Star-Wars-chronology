@@ -6,6 +6,7 @@
                 margin: 0;
                 padding: 0;
                 line-height: 1.6;
+                cursor: url('lightsaber.png'), auto; 
             }
             
             header {
@@ -162,3 +163,6 @@
             ::-webkit-scrollbar-thumb:hover {
                 background: #0055AA;
             }
+html, body {
+    cursor: url('lightsaber.png'), auto;
+}
