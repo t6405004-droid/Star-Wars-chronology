@@ -309,5 +309,145 @@
             </p>
         </footer>
     </body>
-
+<script>
+(function() {
+    // Создаём canvas для рисования меча
+    const canvas = document.createElement('canvas');
+    canvas.id = 'lightsaber-canvas';
+    document.body.appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    
+    // Координаты мыши
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    
+    // Настройки меча
+    const bladeLength = 120;
+    const bladeWidth = 6;
+    const glowSize = 25;
+    
+    // Выбор цвета меча (можно менять)
+    // Синий (как у Оби-Вана) - #0066CC соответствует стилю сайта
+    let currentColor = { r: 0, g: 102, b: 204 }; // Синий
+    
+    // Функция обновления размера canvas
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        draw();
+    }
+    
+    // Функция отрисовки меча
+    function draw() {
+        if (!ctx) return;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Рисуем рукоять меча
+        const handleX = mouseX;
+        const handleY = mouseY + bladeLength - 12;
+        
+        ctx.shadowBlur = 0;
+        
+        // Металлическая рукоять
+        ctx.fillStyle = '#444';
+        ctx.fillRect(handleX - 6, handleY - 6, 12, 24);
+        
+        ctx.fillStyle = '#666';
+        ctx.fillRect(handleX - 4, handleY - 4, 8, 18);
+        
+        // Золотые акценты на рукояти
+        ctx.fillStyle = '#FFD700';
+        ctx.fillRect(handleX - 3, handleY + 2, 6, 3);
+        ctx.fillRect(handleX - 3, handleY - 4, 6, 3);
+        
+        // Рисуем лезвие
+        const startX = mouseX;
+        const startY = mouseY;
+        const endX = mouseX;
+        const endY = mouseY - bladeLength;
+        
+        // Внешнее свечение
+        ctx.shadowColor = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, 0.9)`;
+        ctx.shadowBlur = glowSize;
+        
+        // Основное лезвие
+        ctx.beginPath();
+        ctx.lineWidth = bladeWidth;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        
+        // Среднее свечение
+        ctx.beginPath();
+        ctx.lineWidth = bladeWidth + 4;
+        ctx.strokeStyle = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, 0.5)`;
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        
+        // Внешнее свечение
+        ctx.beginPath();
+        ctx.lineWidth = bladeWidth + 10;
+        ctx.strokeStyle = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, 0.2)`;
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        
+        ctx.shadowBlur = 0;
+        
+        // Искра на кончике меча
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
+        ctx.fill();
+        
+        // Маленькое свечение вокруг кончика
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, 12, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${currentColor.r}, ${currentColor.g}, ${currentColor.b}, 0.3)`;
+        ctx.fill();
+    }
+    
+    // Отслеживание движения мыши
+    function updateMousePosition(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        draw();
+    }
+    
+    // Обработка выхода мыши за пределы окна
+    function handleMouseLeave() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    function handleMouseEnter(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        draw();
+    }
+    
+    // Инициализация
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('mousemove', updateMousePosition);
+    document.body.addEventListener('mouseleave', handleMouseLeave);
+    document.body.addEventListener('mouseenter', handleMouseEnter);
+    
+    resizeCanvas();
+    
+    // Небольшая анимация мерцания (опционально)
+    let flicker = 0;
+    function animateFlicker() {
+        if (Math.random() > 0.7) {
+            flicker = Math.random() * 5 + 1;
+            ctx.shadowBlur = glowSize + flicker;
+        }
+        requestAnimationFrame(animateFlicker);
+    }
+    animateFlicker();
+})();
+</script>
 </html>
