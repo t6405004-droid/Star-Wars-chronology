@@ -173,3 +173,6 @@ html, body {
 a, button, [role="button"], .interactive, .future-project, img {
     cursor: url('lightsaber.png'), auto;
 }
+html, body {
+    cursor: crosshair;
+}
