@@ -163,36 +163,3 @@ img {
     background: #0055AA;
 }
 
-/* ========== СВЕТОВОЙ МЕЧ - КУРСОР ========== */
-/* Скрываем стандартный курсор */
-html, body {
-    cursor: url('lightsaber.png'), auto;
-}
-
-/* Для всех интерактивных элементов */
-a, button, [role="button"], .interactive, .future-project, img {
-    cursor: url('lightsaber.png'), auto;
-}
-/* Простой световой меч - курсор в виде меча */
-html, body {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="14" y="2" width="4" height="28" fill="%2300CCFF" /><rect x="12" y="28" width="8" height="4" fill="%23888888" /><rect x="13" y="26" width="6" height="2" fill="%23AAAAAA" /><rect x="14" y="4" width="4" height="24" fill="%2300FFFF" /><rect x="15" y="3" width="2" height="2" fill="%23FFFFFF" /></svg>') 16 16, auto;
-}
-
-/* Для ссылок и кнопок */
-a, button {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="14" y="2" width="4" height="28" fill="%23FF3333" /><rect x="12" y="28" width="8" height="4" fill="%23888888" /><rect x="13" y="26" width="6" height="2" fill="%23AAAAAA" /><rect x="14" y="4" width="4" height="24" fill="%23FF6666" /><rect x="15" y="3" width="2" height="2" fill="%23FFFFFF" /></svg>') 16 16, pointer;
-}
-/* Яркий курсор в стиле Star Wars */
-html, body {
-    cursor: crosshair;
-}
-
-/* Делаем курсор больше и заметнее */
-a, button {
-    cursor: pointer;
-}
-
-/* Добавляем эффект при наведении на ссылки */
-a:hover, button:hover {
-    text-shadow: 0 0 5px #0066CC;
-}
